@@ -88,7 +88,7 @@ fillQuestions() {
 	if (triva.gameRunning()) {
 		//showScores();
 	} else {
-		var element = $("#question);
+		var element = $("#question");
 		element.innerHTML = trivia.getQuestionNumber().text;
 	}
 		
