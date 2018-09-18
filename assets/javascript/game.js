@@ -1,6 +1,4 @@
-
-
-// timer
+// // timer ~---------------------~~~
 function startTimer(duration, timeLeft) {
     var timer = duration;
     var seconds = seconds;
@@ -9,97 +7,159 @@ function startTimer(duration, timeLeft) {
         timeLeft.text(" " + seconds);
 				--timer;
             if (timer < 0) {
-            clearInterval(interval)
-            alert("Time is Up!");
-        }
+            clearInterval(interval);
+			alert("Time is Up!");
+		}
     }, 1000);
 }
 
 // jquery function to plug 15 seconds into the timer and write it to the DOM
 
-$(function() {
-    var fifteenSeconds = 15;
+$("#playButton").click(function() {
+    var thirtySeconds = 30;
     var timeLeft = $('#timer');
-    startTimer(fifteenSeconds, timeLeft);
+    startTimer(thirtySeconds, timeLeft);
 });
 
-//contructor for questions
 
-function questions(text, choice, answer) {
-	// this text for question text
-	this.text = text;
-	// this choice
-	this.choice = choice;
-	// this answer
-	this.answer = answer; 
-}
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//array of questions, calling the constructor function "questions" creating the new object "question" with "new"
+var questions = [{
+	"question":"What should you be doing right now?",
+	"optionA":"Cooking",
+	"optionB":"Cleaning",
+	"optionC":"Coding",
+	"optionD":"Knife Fighting",
+	"answer":"C",
+}, {
+	"question":"Brannigans Law is like Brannigans Love. ___ and ___",
+	"optionA":"Hard, Fast",
+	"optionB":"Sweaty, Ready",
+	"optionC":"Once, Done",
+	"optionD":"This, That",
+	"answer":"A",
+}, {
+	"question":"In the movie, Avengers: Infinity War, what does Spider-Man say to Tony Stark at the end?",
+	"optionA":"I don't feel so good Mr. Stark",
+	"optionB":"I don't feel so Stark Mr. Good",
+	"optionC":"I don't Stark so good Mr. Feel",
+	"optionD":"I good so Feel Mr. Don't",
+	"answer":"A",
+}, {
+	"question":"Who is the one true ruler of all mankind?",
+	"optionA":"The Emperor of Mankind",
+	"optionB":"The President of the Universe",
+	"optionC":"Bhamophet",
+	"optionD":"Ding Dong Monkey Butt",
+	"answer":"A",
+}, {
+	"question":"What is the other primary language spoken in the show 'Firefly'?",
+	"optionA":"Mandarin",
+	"optionB":"Japanese",
+	"optionC":"German",
+	"optionD":"Binary",
+	"answer":"A",
+}, {
+	"question":"How much RAM did Bill Gates say 'more than you'd ever need!?",
+	"optionA":"8GB",
+	"optionB":"16GB",
+	"optionC":"512k",
+	"optionD":"640k",
+	"answer":"D",
+}, {
+	"question":"Is the correct answer D?",
+	"optionA":"Yes.",
+	"optionB":"Yes?",
+	"optionC":"Maybe?",
+	"optionD":"No",
+	"answer":"D",
+}, {
+	"question":"When coding, which practice is best for overall self care?",
+	"optionA":"Showering",
+	"optionB":"Multiple applications of caffiene daily",
+	"optionC":"Heavy Drinking",
+	"optionD":"Banjo Therapy",
+	"answer":"B",
+}, {
+	"question":"Star Wars was recently just bought out by which major corporation?",
+	"optionA":"ComcastNBC Universal",
+	"optionB":"ABC",
+	"optionC":"Disney",
+	"optionD":"Spectrum",
+	"answer":"C",
+}, {
+	"question":"In Futurama, what year does Fry get frozen?",
+	"optionA":"1999",
+	"optionB":"2004",
+	"optionC":"3004",
+	"optionD":"M41.334",
+	"answer":"A",
+}, {
+	"question":"If a tree falls in the woods, does it make a sound?",
+	"optionA":"Yes, duh",
+	"optionB":"Only if it smells right",
+	"optionC":"In winter, occasionally",
+	"optionD":"No, sound doesn't travel that way",
+	"answer":"B",
+}, ]
+// ~~~~~~~~~~~~~~~~~~~~~
 
-// adds correct answer function to question function above, and checks to see if answer is === to choice
-questions.prototype.correctAnswer = function(choice) {
-	return choice === this.answer;
-}
-
-// constructor for trivia 
-
-function trivia(questions) {
-	this.score = 0;
-	this.questions = questions;
-	this.questionNumber = 0;
-}
-
-// adds current question number function to constructor above
-
-trivia.prototype.getQuestionNumber = function () {
-	return this.questions[this.questionNumber]
-}
-
-// game stops running if the question number is equal to the length of the number of questions
-trivia.prototype.gameRunning = function () {
-	return this.questions.length === this.questionNumber;
-}
-
-//adds guess event to the constructor
-trivia.prototype.guess = function (answer) {
-	// when a guess happens, increases the current question number by one
-	this.questionNumber++;
-	// if the correct answer of this question number, increase score by one
-	if (this.getQuestionNumber().correctAnswer(answer) {
-	    this.score++;
-	}
-}
-	    
-	    //array of questions, calling the constructor function "questions" creating the new object "question" with "new"
-var questions = [
-	new question("What were Chihuahua dogs originally bred for?", ["Meat", "Hunting", "Fishing", "Law Enforcement"], "A"),
-	new question("In Tennessee it is illegal to drive if you are what?", ["Asleep", "Bored", "Excited", "Jealous"], "A"),
-	new question("If you are wearing a Swimsuit in Florida in public, what is illegal for you to do?", ["Dance", "Run", "Sing", "Party"), "C",
-	new question("In Salem Oregon its illegal for women to do what?", ["Read", "Tickle", "Wrestle", "Swim"], "C"),
-	new question("In Lexington Kentucky what can't you carry in your pocket?", ["Lint", "Bears", "Pickles", "Ice Cream"], "D",
-	new question("Millicent Roberts is the middle and last name of what iconic children’s toy?", ["Barbie", "Mr. Potato Head", "GI Joe", "Furby"], "A"),
-	new question("What do you hammer a nail with?", ["A Hammer", "A Nail", "A wrench", "Your face"], "B")
-	new question("Who is the true ruler of all mankind?", ["Vigo the Carpathian", "The Emperor himself", "Lex Luthor", "J.Jonah Jameson"], "B",),
-	new question("It is the 41st Millenium. How are things looking?", ["Pretty good!", "Pretty bad!", "Grim and Dark", "Sunshine and rainbows!"], "C"),
-	new question("If a tree falls in the woods and no one is around to hear it, does it make a sound?", ["Yes, duh", "No, sound doesn't travel that way", "Only if it smells", "There's a lot of questions on here"], "D")
-];
-
-// function to fill in the text with the question array
-
-fillQuestions() {
-	if (triva.gameRunning()) {
-		//showScores();
-	} else {
-		var element = document.getElementById("question");
-		element.innerHTML = trivia.getQuestionNumber().text;
-	}
-		
-		
+//variables 
+var currentQuestion = 0, // loads at questions index, starts at 0
+	score = 0, // 10 questions, will be divisible by 10
+	container = document.getElementById("triviaContainer"),
+	questionElement = document.getElementById("question"),
+	optA = document.getElementById("optA"),
+	optB = document.getElementById("optB"),
+	optC = document.getElementById("optC"),
+	optD = document.getElementById("optD"),
+	totalQuestions = questions.length,
+	nextButton = document.getElementById("nextButton"),
+	resultContainer = document.getElementById("result")
 	
-var trivia = new trivia(questions);
-	
-fillQuestions();
-		
-	  
 
+//game logic
 
+function nextQuestion() {
+	var selectedOption = document.querySelector('input[type=radio]:checked');
+	if(!selectedOption) {
+		alert("Please select an answer");
+		return;
+	}
+	var answer = selectedOption.value;
+	if(questions[currentQuestion].answer == answer) { // check answer
+		score += 10; //adds 10 to score
+	}
+	selectedOption.checked = false; // unchecks radio button
+	currentQuestion++; // moves to next question in array
 
+	if(currentQuestion == totalQuestions -1) {
+		nextButton.textContent = "Finshed!";
+	}
 
+	if(currentQuestion == totalQuestions) {
+		container.style.display = "none";
+		resultContainer.style.display = "none";
+		resultContainer.textContent = "Your Score:" + score;
+		return;
+	}
+	loadQuestion(currentQuestion);
+}
+$("#playButton").click(loadQuestion(currentQuestion))
+
+function loadQuestion(questionIndex) {
+	var i = questions[questionIndex];
+	questionElement.textContent = [questionIndex + 1] + ". " + i.question;
+	optA.textContent = i.optionA;
+	optB.textContent = i.optionB;
+	optC.textContent = i.optionC;
+	optD.textContent = i.optionD;
+}
+//music, seriously dont comment this back in until you're done
+// function play(){
+// 	var audio = document.getElementById("audio");
+// 	var correctAudio = document.getElementById("correctAudio")
+// 	var wrongAudio = document.getElementById("wrongAudio")
+// 	audio.play();
+// 	return;
+// }

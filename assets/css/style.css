@@ -1,0 +1,117 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-image: url(../images/background.jpg)
+}
+
+.container{
+    height: 500px;
+    width: 900px;
+    max-width: 900px;
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translateX(-50%) translateY(-50%);
+    padding: 20px;
+    border: 1px solid white;
+    box-shadow: 0 0 10px 5px black;
+}
+
+.title{
+    padding: 20px;
+    text-align: center;
+    font-size: 36px;
+    box-shadow: 0 0 10px 5px black;
+    border: 1px solid white;
+    text-transform: uppercase;
+    color: White;
+    background: black;
+}
+
+.question{
+    padding: 20px;
+    font-size: 22px;
+    background: white;
+    border-radius: 20px;
+    margin: 10px 0 10px 0;
+    color: black;
+}
+
+.timer-div{
+    position: absolute;
+    top: 90%;
+    left: 47%;
+    padding: 20px;
+    font-size: 22px;
+    background: white;
+    border-radius: 20px;
+    margin: 10px 0 10px 0;
+    color: black;
+}
+
+.option{
+    width: 390px;
+    /* display: inline-block; */
+    padding: 10px;
+    vertical-align: middle;
+    background: white;
+    margin: 10px;
+    color: black;
+    border-radius: 20px;
+    float: left;
+}
+
+.option:hover{
+    background: darkgray;
+    color: #f6f6f6;
+    cursor: pointer;
+}
+
+.next-btn{
+    border: none;
+    outline: none;
+    background: white;
+    width: 150px;
+    height: 30px;
+    border-radius: 30px;
+    cursor: pointer;
+    float: right;
+    margin: 10px;
+}
+.play-btn{
+    border: none;
+    outline: none;
+    background: white;
+    width: 150px;
+    height: 30px;
+    border-radius: 30px;
+    cursor: pointer;
+    float: left;
+    margin: 10px;
+}
+
+.next-btn:hover{
+    background:darkgrey;
+    color:white;
+}
+
+.result{
+    height: 50px;
+    text-align: center;
+    font-size: 75px;
+    top: 86%;
+}
+
+.option input:checked .option{
+    background: yellow;
+    color: black;
+}
+
+#bg {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+      
+    /* Preserve aspet ratio */
+    min-width: 100%;
+    min-height: 100%;
+  }

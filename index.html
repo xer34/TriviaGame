@@ -1,33 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+      <title>Document</title>
+      <style>
+              body {
+        font-family: 'Roboto', sans-serif;
+      }
+      </style>     
 </head>
+<img src="assets/images/background.jpg" id="bg" alt="">
+<div id="triviaContainer" class="container">
+      <div class="title">Who Wants Literally Nothing</div>
+      <div id="question" class="question"></div>
+      <label class="option"><input type="radio" name="option" value="A" /><span id="optA"></span></label>
+      <label class="option"><input type="radio" name="option" value="B" /><span id="optB"></span></label>
+      <label class="option"><input type="radio" name="option" value="C" /><span id="optC"></span></label>
+      <label class="option"><input type="radio" name="option" value="D" /><span id="optD"></span></label>
+      <button id="nextButton" class="next-btn" onclick="nextQuestion()">Next Question</button>
+      <input  id="playButton" class="play-btn" type="button" value="START GAME"  onclick="play()">
+    </div>
+    <div id="result" class="container result" sytle="display: none;"></div>
+    <div class="timer-div"><span id="timer" class="timer-count"></span></div>
+    <audio id="audio" src="assets/sounds/idle.mp3" loop="loop"></audio>
+    <audio id="audio" src="assets/sounds/wrong.mp3"></audio>
+    <audio id="audio" src="assets/sounds/correct.mp3"></audio>
+    
+   
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="assets/javascript/game.js"></script>
 
-<body>
-
-<div class="jumbotron">
-  <h1 class="display-4">Triva Game</h1>
-  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-  <hr class="my-4">
-  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-</div>
-
-<div class="container">
-  <div class="row">
-  <div class="col-3"></div>
-      <div class="col-6"></div>
-      <div class="col-3"></div>
-    <h1>Time Left:<span id="timer"></span></h1>
-  </div>
-   <div class="row">
-    <div class="col-12">
-      <p><span id="question"></span></p>
-     </div>
-  </div>
-</div>
-
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
+     
 </body>
+</html>
+
