@@ -38,7 +38,7 @@ body {
 
 .timer-div{
     position: absolute;
-    top: 90%;
+    top: 81%;
     left: 47%;
     padding: 20px;
     font-size: 22px;
@@ -76,6 +76,7 @@ body {
     cursor: pointer;
     float: right;
     margin: 10px;
+    
 }
 .play-btn{
     border: none;
@@ -99,6 +100,7 @@ body {
     text-align: center;
     font-size: 75px;
     top: 86%;
+    color: white;
 }
 
 .option input:checked .option{
@@ -111,7 +113,7 @@ body {
     top: 0; 
     left: 0; 
       
-    /* Preserve aspet ratio */
+    /* Preserve aspect ratio */
     min-width: 100%;
     min-height: 100%;
   }

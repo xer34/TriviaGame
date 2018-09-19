@@ -1,4 +1,6 @@
-// // timer ~---------------------~~~
+newGame();
+
+// // timer
 function startTimer(duration, timeLeft) {
     var timer = duration;
     var seconds = seconds;
@@ -9,20 +11,47 @@ function startTimer(duration, timeLeft) {
             if (timer < 0) {
             clearInterval(interval);
 			alert("Time is Up!");
-		}
+			$("#question").hide();
+			$("#optA").hide();
+			$("#optB").hide();
+			$("#optC").hide();
+			$("#optD").hide();	
+
+
+			var selectedOption = document.querySelector('input[type=radio]:checked');
+			var answer = selectedOption.value;
+
+			if(questions[currentQuestion].answer === answer) { // check answer
+				$("#result").text("You are correct!") ; //Correct! Splash.
+			} else {
+				$("#result").text("You are wrong-a-long-a-ding-dong");
+			}
+			}
+			
     }, 1000);
 }
+// new game function
 
-// jquery function to plug 15 seconds into the timer and write it to the DOM
+function newGame() {
+// $("#triviaContainer").empty();
+$("#question").empty();
+$("#optA").empty();
+$("#optB").empty();
+$("#optC").empty();
+$("#optD").empty();
+currentQuestion = 0
+score = 0
+$("#playButton").show()}
 
+
+// jquery function to plug 30 seconds into the timer and write it to the DOM
 $("#playButton").click(function() {
-    var thirtySeconds = 30;
+    var thirtySeconds = 2;
     var timeLeft = $('#timer');
-    startTimer(thirtySeconds, timeLeft);
+	startTimer(thirtySeconds, timeLeft);
+	$(this).hide();
 });
 
-
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //array of questions, calling the constructor function "questions" creating the new object "question" with "new"
 var questions = [{
 	"question":"What should you be doing right now?",
@@ -80,14 +109,7 @@ var questions = [{
 	"optionC":"Heavy Drinking",
 	"optionD":"Banjo Therapy",
 	"answer":"B",
-}, {
-	"question":"Star Wars was recently just bought out by which major corporation?",
-	"optionA":"ComcastNBC Universal",
-	"optionB":"ABC",
-	"optionC":"Disney",
-	"optionD":"Spectrum",
-	"answer":"C",
-}, {
+},  {
 	"question":"In Futurama, what year does Fry get frozen?",
 	"optionA":"1999",
 	"optionB":"2004",
@@ -102,7 +124,6 @@ var questions = [{
 	"optionD":"No, sound doesn't travel that way",
 	"answer":"B",
 }, ]
-// ~~~~~~~~~~~~~~~~~~~~~
 
 //variables 
 var currentQuestion = 0, // loads at questions index, starts at 0
@@ -133,19 +154,23 @@ function nextQuestion() {
 	selectedOption.checked = false; // unchecks radio button
 	currentQuestion++; // moves to next question in array
 
-	if(currentQuestion == totalQuestions -1) {
+	if(currentQuestion === totalQuestions -1) {
 		nextButton.textContent = "Finshed!";
 	}
 
-	if(currentQuestion == totalQuestions) {
-		container.style.display = "none";
-		resultContainer.style.display = "none";
+	if(currentQuestion === totalQuestions) {
+		// container.style.display = "none";
+		$("#triviaContainer").empty();
+		// resultContainer.style.display = "none";
 		resultContainer.textContent = "Your Score:" + score;
 		return;
 	}
 	loadQuestion(currentQuestion);
+	
 }
-$("#playButton").click(loadQuestion(currentQuestion))
+$("#playButton").on("click",
+	(loadQuestion(currentQuestion)));
+
 
 function loadQuestion(questionIndex) {
 	var i = questions[questionIndex];
@@ -156,10 +181,10 @@ function loadQuestion(questionIndex) {
 	optD.textContent = i.optionD;
 }
 //music, seriously dont comment this back in until you're done
-// function play(){
-// 	var audio = document.getElementById("audio");
-// 	var correctAudio = document.getElementById("correctAudio")
-// 	var wrongAudio = document.getElementById("wrongAudio")
-// 	audio.play();
-// 	return;
-// }
+function play(){
+	var audio = document.getElementById("audio");
+	var correctAudio = document.getElementById("correctAudio")
+	var wrongAudio = document.getElementById("wrongAudio")
+	audio.play();
+	return;
+}
