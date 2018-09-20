@@ -89,10 +89,19 @@ body {
     float: left;
     margin: 10px;
     position: absolute;
-    top: 40%;
+    top: 60%;
     left:42%;
     z-index: 2;
     
+}
+
+.play-img{
+    z-index: 2;
+    position: absolute;
+    top: 12%;
+    left: 38%;
+    width: 280px;
+    height: 280px;
 }
 
 .next-btn:hover{
@@ -112,7 +121,7 @@ body {
     border: 1px solid white;
     box-shadow: 0 0 10px 5px black;
     z-index: 1;
-    color: white;
+    color: red;
     font-size: 42px;
 }
 

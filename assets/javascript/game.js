@@ -3,10 +3,11 @@ newGame();
 // new game function
 
 function newGame() {
-	$("#triviaContainer").hide();
-	currentQuestion = 0
-	score = 0
-	$("#playButton").show()}
+	$("#triviaContainer").hide(); // hides entire container
+	currentQuestion = 0 // sets current index 
+	score = 0 // set score to 0
+	$("#playButton").show()} // shows play button
+	$(".play-img").show();
 
 
 // // timer
@@ -32,11 +33,15 @@ function startTimer(duration, timeLeft) {
 				correctAudio.play(); //Correct! Splash.
 				$("#result").show();
 			} else {
-				$("#result").text("You are wrong-a-long-a-ding-dong! Next question in 5 seconds!");
+				$("#result").text("You are wrong-a-long-a-ding-dong! The correct answer was " + answer + ". Next question in 5 seconds!");
 				wrongAudio.play();
 				$("#result").show();
 			}
 			setTimeout(function() {nextQuestion()}, 5000);
+
+			if(currentQuestion === totalQuestions) {
+				clearInterval(interval);
+				}
 			
 			}
 			
@@ -45,13 +50,14 @@ function startTimer(duration, timeLeft) {
 
 // jquery function to plug 30 seconds into the timer and write it to the DOM
 $("#playButton").click(function() {
-    var thirtySeconds = 5;
+	$(".play-img").hide();
+    var thirtySeconds = 2;
     var timeLeft = $('#timer');
 	startTimer(thirtySeconds, timeLeft);
 	$("#triviaContainer").show();
 	$(this).hide();
 	$("#result").hide();
-});
+	});
 
 //array of questions, calling the constructor function "questions" creating the new object "question" with "new"
 var questions = [{
@@ -136,7 +142,6 @@ var currentQuestion = 0, // loads at questions index, starts at 0
 	optC = document.getElementById("optC"),
 	optD = document.getElementById("optD"),
 	totalQuestions = questions.length,
-	nextButton = document.getElementById("nextButton"),
 	resultContainer = document.getElementById("result"),
 	correctAudio = document.getElementById("audioCorrect"),
 	wrongAudio = document.getElementById("audioWrong")
@@ -148,7 +153,7 @@ function nextQuestion() {
 	$("#triviaContainer").show();
 	$("#result").hide();
 	audio.play();	
-	var thirtySeconds = 5;
+	var thirtySeconds = 2;
     var timeLeft = $('#timer');
 	startTimer(thirtySeconds, timeLeft);
 	var selectedOption = document.querySelector('input[type=radio]:checked');
@@ -163,15 +168,12 @@ function nextQuestion() {
 	selectedOption.checked = false; // unchecks radio button
 	currentQuestion++; // moves to next question in array
 
-	if(currentQuestion === totalQuestions -1) {
-		nextButton.textContent = "Finshed!";
-	}
-
 	if(currentQuestion === totalQuestions) {
 		$("#result").show();
 		resultContainer.textContent = "Your Score:" + score;
 		newGame();
-		return;
+		startTimer(clearInterval(interval));
+		return;		
 	}
 	loadQuestion(currentQuestion);
 	
