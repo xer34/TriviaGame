@@ -28,11 +28,11 @@ function startTimer(duration, timeLeft) {
 			var answer = selectedOption.value;
 
 			if(questions[currentQuestion].answer === answer) { // check answer
-				$("#result").text("You are correct!") ;
+				$("#result").text("You are correct! Next question in 5 seconds!");
 				correctAudio.play(); //Correct! Splash.
 				$("#result").show();
 			} else {
-				$("#result").text("You are wrong-a-long-a-ding-dong");
+				$("#result").text("You are wrong-a-long-a-ding-dong! Next question in 5 seconds!");
 				wrongAudio.play();
 				$("#result").show();
 			}
