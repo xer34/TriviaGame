@@ -1,5 +1,14 @@
 newGame();
 
+// new game function
+
+function newGame() {
+	$("#triviaContainer").hide();
+	currentQuestion = 0
+	score = 0
+	$("#playButton").show()}
+
+
 // // timer
 function startTimer(duration, timeLeft) {
     var timer = duration;
@@ -16,39 +25,30 @@ function startTimer(duration, timeLeft) {
 			$("#optB").hide();
 			$("#optC").hide();
 			$("#optD").hide();	
+			audio.pause();
 
 
 			var selectedOption = document.querySelector('input[type=radio]:checked');
 			var answer = selectedOption.value;
 
 			if(questions[currentQuestion].answer === answer) { // check answer
-				$("#result").text("You are correct!") ; //Correct! Splash.
+				$("#result").text("You are correct!") ;
+				correctAudio.play() //Correct! Splash.
 			} else {
 				$("#result").text("You are wrong-a-long-a-ding-dong");
+				wrongAudio.play()
 			}
 			}
 			
     }, 1000);
 }
-// new game function
-
-function newGame() {
-// $("#triviaContainer").empty();
-$("#question").empty();
-$("#optA").empty();
-$("#optB").empty();
-$("#optC").empty();
-$("#optD").empty();
-currentQuestion = 0
-score = 0
-$("#playButton").show()}
-
 
 // jquery function to plug 30 seconds into the timer and write it to the DOM
 $("#playButton").click(function() {
-    var thirtySeconds = 2;
+    var thirtySeconds = 5;
     var timeLeft = $('#timer');
 	startTimer(thirtySeconds, timeLeft);
+	$("#triviaContainer").show();
 	$(this).hide();
 });
 
@@ -183,8 +183,8 @@ function loadQuestion(questionIndex) {
 //music, seriously dont comment this back in until you're done
 function play(){
 	var audio = document.getElementById("audio");
-	var correctAudio = document.getElementById("correctAudio")
-	var wrongAudio = document.getElementById("wrongAudio")
 	audio.play();
 	return;
 }
+var correctAudio = document.getElementById("audioCorrect")
+var wrongAudio = document.getElementById("audioWrong")

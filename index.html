@@ -15,6 +15,7 @@
       </style>     
 </head>
 <img src="assets/images/background.jpg" id="bg" alt="">
+<div><input  id="playButton" class="play-btn" type="button" value="START GAME"  onclick="play()"></div>
 <div id="triviaContainer" class="container">
       <div class="title">Who Wants Literally Nothing</div>
       <div id="question" class="question"></div>
@@ -23,13 +24,14 @@
       <label class="option"><input type="radio" name="option" value="C" /><span id="optC"></span></label>
       <label class="option"><input type="radio" name="option" value="D" /><span id="optD"></span></label>
       <button id="nextButton" class="next-btn" onclick="nextQuestion()">Next Question</button>
-      <input  id="playButton" class="play-btn" type="button" value="START GAME"  onclick="play()">
-    </div>
+      </div>
+      
     <div id="result" class="container result" sytle="display: none;"></div>
     <div class="timer-div"><span id="timer" class="timer-count"></span></div>
     <audio id="audio" src="assets/sounds/idle.mp3" loop="loop"></audio>
-    <audio id="audio" src="assets/sounds/wrong.mp3"></audio>
-    <audio id="audio" src="assets/sounds/correct.mp3"></audio>
+    <audio id="audioWrong" src="assets/sounds/wrong.mp3"></audio>
+    <audio id="audioCorrect" src="assets/sounds/correct.mp3"></audio>
+    
     
    
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
