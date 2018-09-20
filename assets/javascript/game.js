@@ -3,10 +3,10 @@ newGame();
 // new game function
 
 function newGame() {
-	$("#triviaContainer").hide();
-	currentQuestion = 0
-	score = 0
-	$("#playButton").show()}
+	$("#triviaContainer").hide(); // hides entire container
+	currentQuestion = 0 // sets current index 
+	score = 0 // set score to 0
+	$("#playButton").show()} // shows play button
 
 
 // // timer
@@ -28,11 +28,11 @@ function startTimer(duration, timeLeft) {
 			var answer = selectedOption.value;
 
 			if(questions[currentQuestion].answer === answer) { // check answer
-				$("#result").text("You are correct!") ;
+				$("#result").text("You are correct! Next question in 5 seconds!") ;
 				correctAudio.play(); //Correct! Splash.
 				$("#result").show();
 			} else {
-				$("#result").text("You are wrong-a-long-a-ding-dong");
+				$("#result").text("You are wrong-a-long-a-ding-dong! Next question in 5 seconds!");
 				wrongAudio.play();
 				$("#result").show();
 			}
