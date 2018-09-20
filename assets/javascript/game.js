@@ -172,6 +172,7 @@ function nextQuestion() {
 		resultContainer.textContent = "Your Score:" + score;
 		newGame();
 		return;
+		startTimer(clearInterval());
 	}
 	loadQuestion(currentQuestion);
 	
