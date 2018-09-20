@@ -20,11 +20,7 @@ function startTimer(duration, timeLeft) {
             if (timer < 0) {
             clearInterval(interval);
 			alert("Time is Up!");
-			$("#question").hide();
-			$("#optA").hide();
-			$("#optB").hide();
-			$("#optC").hide();
-			$("#optD").hide();	
+			$("#triviaContainer").hide();	
 			audio.pause();
 
 
@@ -33,11 +29,15 @@ function startTimer(duration, timeLeft) {
 
 			if(questions[currentQuestion].answer === answer) { // check answer
 				$("#result").text("You are correct!") ;
-				correctAudio.play() //Correct! Splash.
+				correctAudio.play(); //Correct! Splash.
+				$("#result").show();
 			} else {
 				$("#result").text("You are wrong-a-long-a-ding-dong");
-				wrongAudio.play()
+				wrongAudio.play();
+				$("#result").show();
 			}
+			setTimeout(function() {nextQuestion()}, 5000);
+			
 			}
 			
     }, 1000);
@@ -50,6 +50,7 @@ $("#playButton").click(function() {
 	startTimer(thirtySeconds, timeLeft);
 	$("#triviaContainer").show();
 	$(this).hide();
+	$("#result").hide();
 });
 
 //array of questions, calling the constructor function "questions" creating the new object "question" with "new"
@@ -136,12 +137,20 @@ var currentQuestion = 0, // loads at questions index, starts at 0
 	optD = document.getElementById("optD"),
 	totalQuestions = questions.length,
 	nextButton = document.getElementById("nextButton"),
-	resultContainer = document.getElementById("result")
+	resultContainer = document.getElementById("result"),
+	correctAudio = document.getElementById("audioCorrect"),
+	wrongAudio = document.getElementById("audioWrong")
 	
 
 //game logic
 
 function nextQuestion() {
+	$("#triviaContainer").show();
+	$("#result").hide();
+	audio.play();	
+	var thirtySeconds = 5;
+    var timeLeft = $('#timer');
+	startTimer(thirtySeconds, timeLeft);
 	var selectedOption = document.querySelector('input[type=radio]:checked');
 	if(!selectedOption) {
 		alert("Please select an answer");
@@ -159,10 +168,9 @@ function nextQuestion() {
 	}
 
 	if(currentQuestion === totalQuestions) {
-		// container.style.display = "none";
-		$("#triviaContainer").empty();
-		// resultContainer.style.display = "none";
+		$("#result").show();
 		resultContainer.textContent = "Your Score:" + score;
+		newGame();
 		return;
 	}
 	loadQuestion(currentQuestion);
@@ -186,5 +194,3 @@ function play(){
 	audio.play();
 	return;
 }
-var correctAudio = document.getElementById("audioCorrect")
-var wrongAudio = document.getElementById("audioWrong")
