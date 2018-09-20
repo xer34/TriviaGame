@@ -45,7 +45,7 @@ function startTimer(duration, timeLeft) {
 
 // jquery function to plug 30 seconds into the timer and write it to the DOM
 $("#playButton").click(function() {
-    var thirtySeconds = 5;
+    var thirtySeconds = 10;
     var timeLeft = $('#timer');
 	startTimer(thirtySeconds, timeLeft);
 	$("#triviaContainer").show();
@@ -148,7 +148,7 @@ function nextQuestion() {
 	$("#triviaContainer").show();
 	$("#result").hide();
 	audio.play();	
-	var thirtySeconds = 5;
+	var thirtySeconds = 10;
     var timeLeft = $('#timer');
 	startTimer(thirtySeconds, timeLeft);
 	var selectedOption = document.querySelector('input[type=radio]:checked');
