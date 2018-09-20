@@ -171,8 +171,8 @@ function nextQuestion() {
 		$("#result").show();
 		resultContainer.textContent = "Your Score:" + score;
 		newGame();
-		return;
 		startTimer(clearInterval());
+		return;		
 	}
 	loadQuestion(currentQuestion);
 	
