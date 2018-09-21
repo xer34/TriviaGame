@@ -1,18 +1,104 @@
 newGame();
 
-// new game function
+//array of questions, calling the constructor function "questions" creating the new object "question" with "new"
+var questions = [{
+	"question":"What should you be doing right now?",
+	"optionA":"A. Cooking",
+	"optionB":"B. Cleaning",
+	"optionC":"C. Coding",
+	"optionD":"D. Knife Fighting",
+	"answer":"C",
+}, {
+	"question":"Brannigans Law is like Brannigans Love. ___ and ___",
+	"optionA":"A. Hard, Fast",
+	"optionB":"B. Sweaty, Ready",
+	"optionC":"C. Once, Done",
+	"optionD":"D. This, That",
+	"answer":"A",
+}, {
+	"question":"In the movie, Avengers: Infinity War, what does Spider-Man say to Tony Stark at the end?",
+	"optionA":"A. I don't feel so good Mr. Stark",
+	"optionB":"B. I don't feel so Stark Mr. Good",
+	"optionC":"C.I don't Stark so good Mr. Feel",
+	"optionD":"D.I good so Feel Mr. Don't",
+	"answer":"A",
+}, {
+	"question":"Who is the one true ruler of all mankind?",
+	"optionA":"A. The Emperor of Mankind",
+	"optionB":"B. The President of the Universe",
+	"optionC":"C. Bhamophet",
+	"optionD":"D. Ding Dong Monkey Butt",
+	"answer":"A",
+}, {
+	"question":"What is the other primary language spoken in the show 'Firefly'?",
+	"optionA":"A. Mandarin",
+	"optionB":"B. Japanese",
+	"optionC":"C. German",
+	"optionD":"D. Binary",
+	"answer":"A",
+}, {
+	"question":"How much RAM did Bill Gates say 'more than you'd ever need!?",
+	"optionA":"A. 8GB",
+	"optionB":"B. 16GB",
+	"optionC":"C. 512k",
+	"optionD":"D. 640k",
+	"answer":"D",
+}, {
+	"question":"Is the correct answer D?",
+	"optionA":"A. Yes.",
+	"optionB":"B. Yes?",
+	"optionC":"C. Maybe?",
+	"optionD":"D. No",
+	"answer":"D",
+}, {
+	"question":"When coding, which practice is best for overall self care?",
+	"optionA":"A. Showering",
+	"optionB":"B. Multiple applications of caffiene daily",
+	"optionC":"C. Heavy Drinking",
+	"optionD":"D. Banjo Therapy",
+	"answer":"B",
+},  {
+	"question":"In Futurama, what year does Fry get frozen?",
+	"optionA":"A. 1999",
+	"optionB":"B. 2004",
+	"optionC":"C. 3004",
+	"optionD":"D. M41.334",
+	"answer":"A",
+}, {
+	"question":"If a tree falls in the woods, does it make a sound?",
+	"optionA":"A. Yes, duh",
+	"optionB":"B. Only if it smells right",
+	"optionC":"C. In winter, occasionally",
+	"optionD":"D. No, sound doesn't travel that way",
+	"answer":"B",
+}, ]
 
+
+//variables 
+var currentQuestion = 0, // loads at questions index, starts at 0
+	score = 0, // 10 questions, will be divisible by 10
+	container = document.getElementById("triviaContainer"),
+	questionElement = document.getElementById("question"),
+	optA = document.getElementById("optA"),
+	optB = document.getElementById("optB"),
+	optC = document.getElementById("optC"),
+	optD = document.getElementById("optD"),
+	totalQuestions = questions.length,
+	resultContainer = document.getElementById("result"),
+	correctAudio = document.getElementById("audioCorrect"),
+	wrongAudio = document.getElementById("audioWrong")
+	
+	
+// new game function
 function newGame() {
 	$("#triviaContainer").hide(); // hides entire container
 	$("#playButton").show()} // shows play button
 	$(".play-img").show(); // show logo
 	$(".wrongImg").hide();
+	$(".notSelected").hide();
 	var currentQuestion = 0 // sets current index 
 	score = 0 // set score to 0
 	
-	
-
-
 // // timer
 function startTimer(duration, timeLeft) {
 	var timer = duration,
@@ -26,16 +112,29 @@ function startTimer(duration, timeLeft) {
 			alert("Time is Up!");
 			$("#triviaContainer").hide();	
 			audio.pause();
+			var selectedOption = document.querySelector('input[type=radio]:checked')
+			
+			
+			if(!selectedOption) {
+				
+				$("#result").text("You did not select an answer! Reloading question in 5 seconds!");
+				wrongAudio.play();
+				$("#result").show();
+				$(".notSelected").show();
+				setTimeout(function() {nextQuestion()}, 5000);
 
-
-			var selectedOption = document.querySelector('input[type=radio]:checked'),
-			answer = selectedOption.value;
-
+			
+			} 
+			var answer = selectedOption.value;
+			
 			if(questions[currentQuestion].answer === answer) { // check answer
+				
+			
 				$("#result").text("You are correct! Next question in 5 seconds!");
 				correctAudio.play(); //Correct! Splash.
 				$("#result").show();
 			} else {
+				
 				$("#result").text("You are wrong-a-long-a-ding-dong! The correct answer was " + answer + ". Next question in 5 seconds!");
 				wrongAudio.play();
 				$("#result").show();
@@ -57,95 +156,9 @@ $("#playButton").click(function() {
 	$("#triviaContainer").show();
 	$(this).hide();
 	$("#result").hide();
+	$(".notSelected").hide();
 	});
 
-//array of questions, calling the constructor function "questions" creating the new object "question" with "new"
-var questions = [{
-	"question":"What should you be doing right now?",
-	"optionA":"Cooking",
-	"optionB":"Cleaning",
-	"optionC":"Coding",
-	"optionD":"Knife Fighting",
-	"answer":"C",
-}, {
-	"question":"Brannigans Law is like Brannigans Love. ___ and ___",
-	"optionA":"Hard, Fast",
-	"optionB":"Sweaty, Ready",
-	"optionC":"Once, Done",
-	"optionD":"This, That",
-	"answer":"A",
-}, {
-	"question":"In the movie, Avengers: Infinity War, what does Spider-Man say to Tony Stark at the end?",
-	"optionA":"I don't feel so good Mr. Stark",
-	"optionB":"I don't feel so Stark Mr. Good",
-	"optionC":"I don't Stark so good Mr. Feel",
-	"optionD":"I good so Feel Mr. Don't",
-	"answer":"A",
-}, {
-	"question":"Who is the one true ruler of all mankind?",
-	"optionA":"The Emperor of Mankind",
-	"optionB":"The President of the Universe",
-	"optionC":"Bhamophet",
-	"optionD":"Ding Dong Monkey Butt",
-	"answer":"A",
-}, {
-	"question":"What is the other primary language spoken in the show 'Firefly'?",
-	"optionA":"Mandarin",
-	"optionB":"Japanese",
-	"optionC":"German",
-	"optionD":"Binary",
-	"answer":"A",
-}, {
-	"question":"How much RAM did Bill Gates say 'more than you'd ever need!?",
-	"optionA":"8GB",
-	"optionB":"16GB",
-	"optionC":"512k",
-	"optionD":"640k",
-	"answer":"D",
-}, {
-	"question":"Is the correct answer D?",
-	"optionA":"Yes.",
-	"optionB":"Yes?",
-	"optionC":"Maybe?",
-	"optionD":"No",
-	"answer":"D",
-}, {
-	"question":"When coding, which practice is best for overall self care?",
-	"optionA":"Showering",
-	"optionB":"Multiple applications of caffiene daily",
-	"optionC":"Heavy Drinking",
-	"optionD":"Banjo Therapy",
-	"answer":"B",
-},  {
-	"question":"In Futurama, what year does Fry get frozen?",
-	"optionA":"1999",
-	"optionB":"2004",
-	"optionC":"3004",
-	"optionD":"M41.334",
-	"answer":"A",
-}, {
-	"question":"If a tree falls in the woods, does it make a sound?",
-	"optionA":"Yes, duh",
-	"optionB":"Only if it smells right",
-	"optionC":"In winter, occasionally",
-	"optionD":"No, sound doesn't travel that way",
-	"answer":"B",
-}, ]
-
-//variables 
-var currentQuestion = 0, // loads at questions index, starts at 0
-	score = 0, // 10 questions, will be divisible by 10
-	container = document.getElementById("triviaContainer"),
-	questionElement = document.getElementById("question"),
-	optA = document.getElementById("optA"),
-	optB = document.getElementById("optB"),
-	optC = document.getElementById("optC"),
-	optD = document.getElementById("optD"),
-	totalQuestions = questions.length,
-	resultContainer = document.getElementById("result"),
-	correctAudio = document.getElementById("audioCorrect"),
-	wrongAudio = document.getElementById("audioWrong")
-	
 
 //game logic
 
@@ -153,15 +166,12 @@ function nextQuestion() {
 	$("#triviaContainer").show();
 	$("#result").hide();
 	$(".wrongImg").hide();
+	$(".notSelected").hide();
 	audio.play();	
 	var thirtySeconds = 10;
     var timeLeft = $('#timer');
 	startTimer(thirtySeconds, timeLeft);
-	var selectedOption = document.querySelector('input[type=radio]:checked');
-	if(!selectedOption) {
-		alert("Please select an answer");
-		return;
-	}
+	var selectedOption = document.querySelector('input[type=radio]:checked')
 	var answer = selectedOption.value;
 	if(questions[currentQuestion].answer == answer) { // check answer
 		score += 10; //adds 10 to score
