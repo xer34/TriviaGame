@@ -139,3 +139,12 @@ body {
     min-width: 100%;
     min-height: 100%;
   }
+
+.wrongImg {
+    z-index: 2;
+    position: absolute;
+    top: 42%;
+    left: 38%;
+    width: 280px;
+    height: 280px;
+}

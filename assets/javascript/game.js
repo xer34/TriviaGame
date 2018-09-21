@@ -4,17 +4,20 @@ newGame();
 
 function newGame() {
 	$("#triviaContainer").hide(); // hides entire container
-	currentQuestion = 0 // sets current index 
-	score = 0 // set score to 0
 	$("#playButton").show()} // shows play button
-	$(".play-img").show();
+	$(".play-img").show(); // show logo
+	$(".wrongImg").hide();
+	var currentQuestion = 0 // sets current index 
+	score = 0 // set score to 0
+	
+	
 
 
 // // timer
 function startTimer(duration, timeLeft) {
-    var timer = duration;
-    var seconds = seconds;
-    var interval = setInterval(function () {
+	var timer = duration,
+	seconds = seconds,
+	interval = setInterval(function () {
         seconds = timer;
         timeLeft.text(" " + seconds);
 				--timer;
@@ -25,8 +28,8 @@ function startTimer(duration, timeLeft) {
 			audio.pause();
 
 
-			var selectedOption = document.querySelector('input[type=radio]:checked');
-			var answer = selectedOption.value;
+			var selectedOption = document.querySelector('input[type=radio]:checked'),
+			answer = selectedOption.value;
 
 			if(questions[currentQuestion].answer === answer) { // check answer
 				$("#result").text("You are correct! Next question in 5 seconds!");
@@ -36,13 +39,10 @@ function startTimer(duration, timeLeft) {
 				$("#result").text("You are wrong-a-long-a-ding-dong! The correct answer was " + answer + ". Next question in 5 seconds!");
 				wrongAudio.play();
 				$("#result").show();
+				$(".wrongImg").show();
 			}
 			setTimeout(function() {nextQuestion()}, 5000);
-
-			if(currentQuestion === totalQuestions) {
-				clearInterval(interval);
-				}
-			
+	
 			}
 			
     }, 1000);
@@ -51,7 +51,7 @@ function startTimer(duration, timeLeft) {
 // jquery function to plug 30 seconds into the timer and write it to the DOM
 $("#playButton").click(function() {
 	$(".play-img").hide();
-    var thirtySeconds = 2;
+    var thirtySeconds = 10;
     var timeLeft = $('#timer');
 	startTimer(thirtySeconds, timeLeft);
 	$("#triviaContainer").show();
@@ -152,8 +152,9 @@ var currentQuestion = 0, // loads at questions index, starts at 0
 function nextQuestion() {
 	$("#triviaContainer").show();
 	$("#result").hide();
+	$(".wrongImg").hide();
 	audio.play();	
-	var thirtySeconds = 2;
+	var thirtySeconds = 10;
     var timeLeft = $('#timer');
 	startTimer(thirtySeconds, timeLeft);
 	var selectedOption = document.querySelector('input[type=radio]:checked');
