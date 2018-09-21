@@ -122,9 +122,8 @@ function startTimer(duration, timeLeft) {
 				$("#result").show();
 				$(".notSelected").show();
 				setTimeout(function() {nextQuestion()}, 5000);
-
-			
 			} 
+
 			var answer = selectedOption.value;
 			
 			if(questions[currentQuestion].answer === answer) { // check answer
@@ -133,6 +132,7 @@ function startTimer(duration, timeLeft) {
 				$("#result").text("You are correct! Next question in 5 seconds!");
 				correctAudio.play(); //Correct! Splash.
 				$("#result").show();
+
 			} else {
 				
 				$("#result").text("You are wrong-a-long-a-ding-dong! The correct answer was " + answer + ". Next question in 5 seconds!");
@@ -140,6 +140,7 @@ function startTimer(duration, timeLeft) {
 				$("#result").show();
 				$(".wrongImg").show();
 			}
+
 			setTimeout(function() {nextQuestion()}, 5000);
 	
 			}
@@ -149,14 +150,18 @@ function startTimer(duration, timeLeft) {
 
 // jquery function to plug 30 seconds into the timer and write it to the DOM
 $("#playButton").click(function() {
+	
 	$(".play-img").hide();
-    var thirtySeconds = 10;
-    var timeLeft = $('#timer');
-	startTimer(thirtySeconds, timeLeft);
 	$("#triviaContainer").show();
 	$(this).hide();
 	$("#result").hide();
 	$(".notSelected").hide();
+
+    var thirtySeconds = 10;
+	var timeLeft = $('#timer');
+	
+	startTimer(thirtySeconds, timeLeft);
+	
 	});
 
 
@@ -167,12 +172,15 @@ function nextQuestion() {
 	$("#result").hide();
 	$(".wrongImg").hide();
 	$(".notSelected").hide();
+
 	audio.play();	
+	startTimer(thirtySeconds, timeLeft);
+
 	var thirtySeconds = 10;
     var timeLeft = $('#timer');
-	startTimer(thirtySeconds, timeLeft);
 	var selectedOption = document.querySelector('input[type=radio]:checked')
 	var answer = selectedOption.value;
+
 	if(questions[currentQuestion].answer == answer) { // check answer
 		score += 10; //adds 10 to score
 	}
