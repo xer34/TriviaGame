@@ -86,7 +86,9 @@ var currentQuestion = 0, // loads at questions index, starts at 0
 	totalQuestions = questions.length,
 	resultContainer = document.getElementById("result"),
 	correctAudio = document.getElementById("audioCorrect"),
-	wrongAudio = document.getElementById("audioWrong")
+	wrongAudio = document.getElementById("audioWrong"),
+	thirtySeconds = 10,
+    timeLeft = $('#timer')
 	
 	
 // new game function
@@ -156,10 +158,6 @@ $("#playButton").click(function() {
 	$(this).hide();
 	$("#result").hide();
 	$(".notSelected").hide();
-
-    var thirtySeconds = 10;
-	var timeLeft = $('#timer');
-	
 	startTimer(thirtySeconds, timeLeft);
 	
 	});
@@ -176,8 +174,7 @@ function nextQuestion() {
 	audio.play();	
 	startTimer(thirtySeconds, timeLeft);
 
-	var thirtySeconds = 10;
-    var timeLeft = $('#timer');
+	
 	var selectedOption = document.querySelector('input[type=radio]:checked')
 	var answer = selectedOption.value;
 
